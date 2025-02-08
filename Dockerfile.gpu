@@ -1,0 +1,19 @@
+FROM nvidia/cuda:11.6.2-base-ubuntu18.04
+
+RUN apt-get update
+RUN apt-get install build-essential -y
+RUN apt-get install -y python3.7
+RUN apt-get install -y python3-pip wget unzip build-essential automake curl python3-dev vim
+
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+RUN python3.7 -m pip install --upgrade pip
+RUN python3.7 -m pip install -U setuptools --no-cache-dir
+
+COPY ./ /home/safety_monitoring
+
+WORKDIR /home/safety_monitoring
+
+RUN python3.7 --version
+
+RUN python3.7 -m pip install torch==1.8.1 torchvision==0.9.1 gym==0.26.2 scikit-learn==0.22.1 kneed similaritymeasures bayesian-torch
+RUN python3.7 -m pip install -r src/racecar/AgentFormer/requirements.txt
