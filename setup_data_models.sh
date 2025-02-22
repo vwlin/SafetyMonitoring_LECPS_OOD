@@ -7,7 +7,7 @@ tar -xzvf racecar_processed_data.tar.gz -C "${1}/src/racecar/AgentFormer/dataset
 
 # copy data to Docker container
 docker cp "${1}/src/f110/data" "${2}:/home/safety_monitoring/src/f110"
-docker cp "${1}/src/racecar/AgentFormer/datasets/racetrack" "${2}:/home/safety_monitoring/src/racecar/AgentFormer/datasets"
+docker cp "${1}/src/racecar/AgentFormer/datasets" "${2}:/home/safety_monitoring/src/racecar/AgentFormer/datasets"
 
 # unpack models
 tar -xzvf f110_models.tar.gz -C "${1}/src/f110"

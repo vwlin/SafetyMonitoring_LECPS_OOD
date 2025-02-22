@@ -29,13 +29,17 @@ The published results were obtained on a machine running Debian 11.0 with 96 cor
     ```
     docker exec -it my_container /bin/bash
     ```
+    To easily view results figures, copy them from the docker container. For example, to export the cartpole results figures, run
+    ```
+    docker cp my_container:/home/safety_monitoring/src/cartpole/figs PATH/TO/SafetyMonitoring_LECPS_OOD/src/cartpole
+    ```
 
 ## Simulation Data and Pretrained Models
 Pre-processed simulation data and pretrained trajectory predictor models are provided.
 
-1. Download the [simulation data](https://figshare.com/articles/dataset/Data_from_Safety_Monitoring_for_Learning-Enabled_Cyber-Physical_Systems_in_Out-of-Distribution_Scenarios/28355438) to the top level directory.
-2. Download the [models](https://figshare.com/articles/software/Models_from_Safety_Monitoring_for_Learning-Enabled_Cyber-Physical_Systems_in_Out-of-Distribution_Scenarios/28366880) to the top level directory. The compressed file is about 6GB.
-3. Run the setup script to unpack the data/models and copy them to the Docker container.
+1. Download the [simulation data](https://figshare.com/articles/dataset/Data_from_Safety_Monitoring_for_Learning-Enabled_Cyber-Physical_Systems_in_Out-of-Distribution_Scenarios/28355438) and place each individual .tar.gz file in the top level directory of this repository (i.e., PATH/TO/SafetyMonitoring_LECPS_OOD/*.tar.gz).
+2. Download the [models](https://figshare.com/articles/software/Models_from_Safety_Monitoring_for_Learning-Enabled_Cyber-Physical_Systems_in_Out-of-Distribution_Scenarios/28366880) and place each individual .tar.gz file in the top level directory of this repository (i.e., PATH/TO/SafetyMonitoring_LECPS_OOD/*.tar.gz). The compressed files together are about 6GB.
+3. Run the setup script. This script will unpack the data/models and copy them to the Docker container. Be sure to replace `PATH/TO/SafetyMonitoring_LECPS_OOD` with your local path. This process may take several minutes, due to the size of the files.
     ```
     ./setup_data_models.sh PATH/TO/SafetyMonitoring_LECPS_OOD my_container
     ```
